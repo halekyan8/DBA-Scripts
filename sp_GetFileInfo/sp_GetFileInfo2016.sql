@@ -1,10 +1,19 @@
-USE DBAMonitor
+USE [DBAMonitor]
 GO
 
-CREATE OR ALTER PROCEDURE [dbo].[sp_GetFileInfo] 
+-- for 2016 and earlier
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE   PROCEDURE [dbo].[sp_GetFileInfo] 
 (
- @disk_name VARCHAR(100) = NULL, 
- @file_type VARCHAR(10) = NULL 
+    @disk_name VARCHAR(100) = NULL, 
+    @file_type VARCHAR(10) = NULL 
 )
 AS
 
@@ -12,7 +21,7 @@ AS
 DECLARE @current_name SYSNAME;
 DECLARE @sql NVARCHAR(MAX);
 
-SET @disk_name = NULLIF(TRIM(@disk_name), '');
+SET @disk_name = NULLIF(LTRIM(RTRIM(@disk_name)), '');
 SET @file_type = LOWER(@file_type)
 
 IF @file_type = 'r'
@@ -47,8 +56,9 @@ CREATE TABLE [#database_files_info] (
 DECLARE [db_names] CURSOR FOR
 SELECT [name]
 FROM [sys].[databases]
-WHERE [database_id] > 4
-  AND [state_desc] = 'ONLINE';
+WHERE 
+    [database_id] > 4  AND 
+    [state_desc] = 'ONLINE';
 
 OPEN [db_names];
 FETCH NEXT FROM [db_names] INTO @current_name;
@@ -91,7 +101,6 @@ LEFT JOIN sys.dm_db_log_space_usage l
 ';
 
     EXEC sys.sp_executesql @sql;
-
     FETCH NEXT FROM [db_names] INTO @current_name;
 END;
 
@@ -111,11 +120,11 @@ FROM
     [#database_files_info]
 WHERE 
     (LEFT([physical_name], 1) IN
-    (SELECT TRIM(value)
+    (SELECT LTRIM(RTRIM(value))
     FROM STRING_SPLIT(@disk_name, ',')) OR @disk_name IS NULL OR @disk_name = '')
- AND 
+    AND 
     [file_type] IN 
-    (SELECT TRIM(value)
+    (SELECT LTRIM(RTRIM(value))
     FROM STRING_SPLIT(@file_type, ','))
 ORDER BY 
     [free_space_mb] DESC
