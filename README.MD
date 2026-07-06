@@ -12,9 +12,9 @@ DBA-Scripts/
 |-- indexes/
 |-- access_management/
 |-- metadata_management/
+|-- sp_GetFileInfo/
 |-- buffer-cache.sql
 |-- dynamic-file-shrink.sql
-|-- file-info-first-aid.sql
 |-- trg-logon-restricter.sql
 `-- README.MD
 ```
@@ -24,7 +24,6 @@ DBA-Scripts/
 | Script | Purpose |
 | --- | --- |
 | `buffer-cache.sql` | Checks buffer cache usage by database, dirty/clean pages, table pages, and Page Life Expectancy. |
-| `file-info-first-aid.sql` | Collects data/log file size, used space, free space, and physical path across online user databases. |
 | `dynamic-file-shrink.sql` | Shrinks a selected data file in batches after calculating reclaimable free space. Use only for one-time space reclamation. |
 | `trg-logon-restricter.sql` | Creates a server-level logon trigger that blocks non-whitelisted logins after work hours and logs allowed connections. |
 
@@ -56,13 +55,19 @@ Permission generation and database user/role assignment helpers.
 | Script | Purpose |
 | --- | --- |
 | `ultimate-grant-permission.sql` | Creates database users for one or more logins across one or more databases and optionally grants common roles/permissions. |
-| `generate-deny-perms-by-obj-type.sql` | Generates `DENY` statements by object type for a selected login. Review generated output before execution. |
+| `deny-object-permissions.sql` | Generates object-level `DENY` statements for a selected login. Review generated output before execution. |
 
 ### `metadata_management/`
 
 Scripts for building and refreshing a database/table metadata collection system.
 
 See [`metadata_management/Readme.MD`](metadata_management/Readme.MD) for the setup order and file details.
+
+### `sp_GetFileInfo/`
+
+Version-specific implementations of `dbo.sp_GetFileInfo` for collecting data/log file size, used space, free space, free space percent, and physical path across online user databases.
+
+See [`sp_GetFileInfo/README.MD`](sp_GetFileInfo/README.MD) for SQL Server version notes, including `TRIM` versus `LTRIM(RTRIM(...))` compatibility.
 
 ## Before Running
 

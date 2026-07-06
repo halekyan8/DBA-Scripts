@@ -1,3 +1,8 @@
+/*
+SQL Server 2017+
+Requires STRING_SPLIT support / compatibility level 130+
+*/
+
 USE DBAMonitor
 GO
 
