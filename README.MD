@@ -15,6 +15,7 @@ DBA-Scripts/
 |-- sp_GetFileInfo/
 |-- buffer-cache.sql
 |-- dynamic-file-shrink.sql
+|-- mail-details.sql
 |-- trg-logon-restricter.sql
 `-- README.MD
 ```
@@ -25,6 +26,7 @@ DBA-Scripts/
 | --- | --- |
 | `buffer-cache.sql` | Checks buffer cache usage by database, dirty/clean pages, table pages, and Page Life Expectancy. |
 | `dynamic-file-shrink.sql` | Shrinks a selected data file in batches after calculating reclaimable free space. Use only for one-time space reclamation. |
+| `mail-details.sql` | Lists Database Mail items from `msdb.dbo.sysmail_allitems`, including recipients, subject, request date, and sent status. |
 | `trg-logon-restricter.sql` | Creates a server-level logon trigger that blocks non-whitelisted logins after work hours and logs allowed connections. |
 
 ## Folders
