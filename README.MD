@@ -12,7 +12,7 @@ DBA-Scripts/
 |-- indexes/
 |-- access-management/
 |-- metadata-management/
-|-- sp-get-file-info/
+|-- sp_GetFileInfo/
 |-- buffer-cache.sql
 |-- dynamic-file-shrink.sql
 |-- mail-details.sql
@@ -56,7 +56,7 @@ Permission generation and database user/role assignment helpers.
 
 | Script | Purpose |
 | --- | --- |
-| `sp-grant-access.sql` | Creates database users for one or more logins across one or more databases and optionally grants common roles and permissions. |
+| `sp_GrantAccess.sql` | Creates database users for one or more logins across one or more databases and optionally grants common roles and permissions. Requires SQL Server 2017+ and compatibility level 130+ for `TRIM` and `STRING_SPLIT`. |
 | `deny-object-permissions.sql` | Generates object-level `DENY` statements for a selected login. Review generated output before execution. |
 
 ### `metadata-management/`
@@ -65,11 +65,11 @@ Scripts for building and refreshing a database/table metadata collection system.
 
 See [`metadata-management/README.md`](metadata-management/README.md) for the setup order and file details.
 
-### `sp-get-file-info/`
+### `sp_GetFileInfo/`
 
 Version-specific implementations of `dbo.sp_GetFileInfo` for collecting data/log file size, used space, free space, free space percent, and physical path across online user databases.
 
-See [`sp-get-file-info/README.md`](sp-get-file-info/README.md) for SQL Server version notes, including `TRIM` versus `LTRIM(RTRIM(...))` compatibility.
+See [`sp_GetFileInfo/README.md`](sp_GetFileInfo/README.md) for SQL Server version notes, including `TRIM` versus `LTRIM(RTRIM(...))` compatibility.
 
 ## Before Running
 

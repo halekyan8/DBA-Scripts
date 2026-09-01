@@ -6,14 +6,14 @@
 
 | Script | Target version | Notes |
 | --- | --- | --- |
-| `sp-get-file-info-2016.sql` | SQL Server 2016 and earlier compatibility | Uses `LTRIM(RTRIM(...))` for whitespace cleanup. |
-| `sp-get-file-info-2022.sql` | SQL Server 2022 compatibility | Uses `TRIM(...)` for whitespace cleanup. |
+| `sp_GetFileInfo2016.sql` | SQL Server 2016 and earlier compatibility | Uses `LTRIM(RTRIM(...))` for whitespace cleanup. |
+| `sp_GetFileInfo2022.sql` | SQL Server 2022 compatibility | Uses `TRIM(...)` for whitespace cleanup. |
 
 ## Version Differences
 
 - SQL Server 2017 introduced the basic `TRIM()` function. Use `LTRIM(RTRIM(...))` when you need compatibility with SQL Server 2016 or earlier.
-- `sp-get-file-info-2022.sql` uses `CREATE OR ALTER PROCEDURE`, which is available in modern SQL Server versions.
-- `sp-get-file-info-2016.sql` uses `CREATE PROCEDURE` plus `SET ANSI_NULLS` and `SET QUOTED_IDENTIFIER` statements for older-version compatibility.
+- `sp_GetFileInfo2022.sql` uses `CREATE OR ALTER PROCEDURE`, which is available in modern SQL Server versions.
+- `sp_GetFileInfo2016.sql` uses `CREATE PROCEDURE` plus `SET ANSI_NULLS` and `SET QUOTED_IDENTIFIER` statements for older-version compatibility.
 - Both versions use `STRING_SPLIT` for comma-separated drive and file-type filters. Confirm compatibility level and availability before running in older environments.
 
 ## Parameters
