@@ -1,6 +1,6 @@
 # Metadata Management SQL Scripts
 
-This folder contains SQL scripts for building and operating the **database & table metadata collection system**.
+This folder contains SQL scripts for building and operating the database and table metadata collection system.
 
 ## Execution Order
 
@@ -13,8 +13,8 @@ To ensure proper setup, execute the scripts in the following order:
 Run these first to create the required metadata tables:
 
 ```sql
-DDL_db_metadata.sql
-DDL_table_metadata.sql
+ddl-database-metadata.sql
+ddl-table-metadata.sql
 ```
 
 These scripts:
@@ -30,8 +30,8 @@ These scripts:
 After the DDL scripts are successfully executed, run the stored procedures:
 
 ```sql
-sp_GetAssetInfoDatabases.sql
-sp_GetAssetInfoTables.sql
+sp-get-asset-info-databases.sql
+sp-get-asset-info-tables.sql
 ```
 
 These procedures:
@@ -54,9 +54,10 @@ These procedures:
 
 | File Name                      | Type             | Purpose                   |
 | ------------------------------ | ---------------- | ------------------------- |
-| `DDL_db_metadata.sql`          | DDL              | Database metadata tables  |
-| `DDL_table_metadata.sql`       | DDL              | Table metadata tables     |
-| `sp_GetAssetInfoDatabases.sql` | Stored Procedure | Collect database metadata |
-| `sp_GetAssetInfoTables.sql`    | Stored Procedure | Collect table metadata    |
+| `ddl-database-metadata.sql`       | DDL              | Database metadata tables             |
+| `ddl-table-metadata.sql`          | DDL              | Table metadata tables                |
+| `sp-get-asset-info-databases.sql` | Stored procedure | Collects database metadata           |
+| `sp-get-asset-info-tables.sql`    | Stored procedure | Collects table metadata              |
+| `db-inventory-detailed.sql`       | Query            | Returns detailed database inventory. |
 
 ---

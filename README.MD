@@ -10,14 +10,14 @@ The repo is organized by DBA area so scripts are easy to find and review before 
 DBA-Scripts/
 |-- backups/
 |-- indexes/
-|-- access_management/
-|-- metadata_management/
-|-- sp_GetFileInfo/
+|-- access-management/
+|-- metadata-management/
+|-- sp-get-file-info/
 |-- buffer-cache.sql
 |-- dynamic-file-shrink.sql
 |-- mail-details.sql
 |-- trg-logon-restricter.sql
-`-- README.MD
+`-- README.md
 ```
 
 ## Root Scripts
@@ -50,26 +50,26 @@ Index health and usage checks for the current database.
 | `index-fragmentation.sql` | Returns sampled fragmentation and page density information. |
 | `index-usage-health.sql` | Combines index usage stats with sampled fragmentation to identify heavily updated or low-use indexes. |
 
-### `access_management/`
+### `access-management/`
 
 Permission generation and database user/role assignment helpers.
 
 | Script | Purpose |
 | --- | --- |
-| `ultimate-grant-permission.sql` | Creates database users for one or more logins across one or more databases and optionally grants common roles/permissions. |
+| `sp-grant-access.sql` | Creates database users for one or more logins across one or more databases and optionally grants common roles and permissions. |
 | `deny-object-permissions.sql` | Generates object-level `DENY` statements for a selected login. Review generated output before execution. |
 
-### `metadata_management/`
+### `metadata-management/`
 
 Scripts for building and refreshing a database/table metadata collection system.
 
-See [`metadata_management/Readme.MD`](metadata_management/Readme.MD) for the setup order and file details.
+See [`metadata-management/README.md`](metadata-management/README.md) for the setup order and file details.
 
-### `sp_GetFileInfo/`
+### `sp-get-file-info/`
 
 Version-specific implementations of `dbo.sp_GetFileInfo` for collecting data/log file size, used space, free space, free space percent, and physical path across online user databases.
 
-See [`sp_GetFileInfo/README.MD`](sp_GetFileInfo/README.MD) for SQL Server version notes, including `TRIM` versus `LTRIM(RTRIM(...))` compatibility.
+See [`sp-get-file-info/README.md`](sp-get-file-info/README.md) for SQL Server version notes, including `TRIM` versus `LTRIM(RTRIM(...))` compatibility.
 
 ## Before Running
 
